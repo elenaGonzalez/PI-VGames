@@ -57,7 +57,7 @@ Está permitido, **bajo tu responsabilidad**, actualizar las dependencias a vers
 
 ## **📋 SOBRE LA API VGAMES...**
 
-En este proyecto contarás con una API de Personajes de Marvel que **correrá localmente desde tu computadora**. De esta manera, siempre tendrás disponible esta API externa localmente para poder realizar tu proyecto.
+En este proyecto contarás con una API de Videojuegos que **correrá localmente desde tu computadora**. De esta manera, siempre tendrás disponible esta API externa localmente para poder realizar tu proyecto.
 
 Para que esta API externa quede funcionando desde tu computadora debes, estando en una consola nueva en la carpeta /server, ejecutar el comando 
 ```npm start```
@@ -108,7 +108,7 @@ No debes modificar **NINGÚN** archivo dentro de la carpeta api/data. Estos son 
 
 4. Reemplazar **`usuariodepostgres`** y **`passwordDePostgres`** con tus propias credenciales para conectarte a postgres. Este archivo va ser ignorado en la subida a github, ya que contiene información sensible (las credenciales).
 
-5. Adicionalmente será necesario que crees, **desde psql (shell o PGAdmin)**, una base de datos llamada **`drivers`**. Si no realizas este paso de manera manual no podrás avanzar con el proyecto.
+5. Adicionalmente será necesario que crees, **desde psql (shell o PGAdmin)**, una base de datos llamada **`videojuegos`**. Si no realizas este paso de manera manual no podrás avanzar con el proyecto.
 
 <br />
 
@@ -118,7 +118,7 @@ No debes modificar **NINGÚN** archivo dentro de la carpeta api/data. Estos son 
 
 La idea de este proyecto es construir una aplicación web a partir de la API [**vgames**] en la que se pueda:
 
--  Buscar personajes.
+-  Buscar videojuegos.
 -  Visualizar la información de los videojuegos.
 -  Filtrarlos.
 -  Ordenarlos.
@@ -154,14 +154,13 @@ Deberás crear dos modelos para tu base de datos. Uno será para los personajes 
 -  ID (deben ser distintos a los que vienen de la API). \*
 -  Titulo. \*
 -  Fecha de lanzamiento. \*
--  . \*
 -  Imagen. \*
 -  Año de aparición. \*
 -  Descripción. \*
 
 <br />
 
-**📍 MODELO 2 | Teams**
+**📍 MODELO 2 | Genres**
 
 -  ID. \*
 -  Nombre. \*
@@ -178,37 +177,38 @@ Para esta parte deberás construir un servidor utilizando **NodeJS** y **Express
 
 Tu servidor deberá contar con las siguientes rutas:
 
-#### **📍 GET | /marvels**
+#### **📍 GET | /videogames**
 
 -  Obtiene un arreglo de objetos, donde cada objeto es un personaje marvel con su información.
 
  IMPORTANTE: Si un personaje marvel no tiene imagen, deberás colocarle una por defecto 🖼️
 
-#### **📍 GET | /marvels/:id**
+#### **📍 GET | /videogames/:id**
 
--  Esta ruta obtiene el detalle de un personaje específico. Es decir que devuelve un objeto con la información pedida en el detalle de un personaje marvel.
+-  Esta ruta obtiene el detalle de un personaje específico. Es decir que devuelve un objeto con la información pedida en el detalle de un videojuego.
 -  El identificador es recibido por parámetro (ID).
--  Tiene que incluir los datos del/los team/s a los quel personaje marvel tiene asociado/s.
--  Debe funcionar tanto para los personajes de la API como para los de la base de datos.
+-  Tiene que incluir los datos del/los genero/s a los que este videojuego tiene asociado/s.
+-  Debe funcionar tanto para los juegos de la API como para los de la base de datos.
 
-#### **📍 GET | /marvels/name?="..."**
+#### **📍 GET | /videogames/name?="..."**
 
 -  Esta ruta debe obtener los primeros 15 personajes que se encuentren con la palabra recibida por query.
 -  Debe poder buscarlo independientemente de mayúsculas o minúsculas.
--  Si no existe el personaje marvel, debe mostrar un mensaje adecuado.
+-  Si no existe el videojuego, debe mostrar un mensaje adecuado.
 -  Debe buscar tanto los de la API como los de la base de datos.
+-  La búsqueda es exacta
 
-#### **📍 POST | /marvels**
+#### **📍 POST | /videogames**
 
--  Esta ruta recibirá todos los datos necesarios para crear un driver y relacionarlo con sus teams solicitados.
+-  Esta ruta recibirá todos los datos necesarios para crear un videojuego y relacionarlo con sus generos solicitados.
 -  Toda la información debe ser recibida por body.
--  Debe crear un driver en la base de datos, y este debe estar relacionado con sus teams indicados (al menos uno).
+-  Debe crear un nuevo videojuego en la base de datos, y este debe estar relacionado con sus generos (dos o más ).
 
-#### **📍 GET | /marvels**
+#### **📍 GET | /videogames**
 
--  Obtiene un arreglo con todos los teams existentes de la API.
--  En una primera instancia, cuando la base de datos este vacía, deberás guardar todos los teams que encuentres en la API.
--  Estos deben ser obtenidos de la API (se evaluará que no haya hardcodeo). Luego de obtenerlos de la API, deben ser guardados en la base de datos para su posterior consumo desde allí.
+-  Obtiene un arreglo con todos los generos existentes de la API.
+-  En una primera instancia, cuando la base de datos este vacía, deberás guardar todos los géneros que encuentres en la API.
+-  Estos deben ser obtenidos de la consulta al enpoint de la API(se evaluará que no haya hardcodeo). Luego de obtenerlos, deben ser guardados en la base de datos para su posterior consumo desde allí.
 
 <br />
 
@@ -229,17 +229,17 @@ Se debe desarrollar una aplicación utilizando **React** y **Redux** que conteng
 
 **📍 HOME PAGE |** la página principal de tu SPA debe contener:
 
--  SearchBar: un input de búsqueda para encontrar drivers por nombre.
--  Sector en el que se vea un listado de cards con los drivers. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta **`GET /marvels`** y deberá mostrar su:
+-  SearchBar: un input de búsqueda para encontrar videojuegos por nombre.
+-  Sector en el que se vea un listado de cards con los videojuegos. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta **`GET /marvels`** y deberá mostrar su:
    -  Imagen.
    -  Nombre.
-   -  Equipos Asociados.
--  Cuando se le hace click a una Card deberá redirigir al detalle de ese personaje específico.
--  Botones/Opciones para **filtrar** por team, y por si su origen es de la API o de la base de datos (creados por nosotros desde el formulario).
--  Botones/Opciones para **ordenar** tanto ascendentemente como descendentemente los personajes marvel por orden alfabético y por año de lanzamiento.
--  Paginado: el listado de marvels se hará por partes. Tu SPA debe contar con un paginado que muestre un total de 12 drivers por página.
+   -  Géneros Asociados.
+-  Cuando se le hace click a una Card deberá redirigir al detalle de ese videojuego específico.
+-  Botones/Opciones para **filtrar** por genero, y por si su origen es de la API o de la base de datos (creados por nosotros desde el formulario).
+-  Botones/Opciones para **ordenar** tanto ascendentemente como descendentemente a los juegos por orden alfabético y por rating.
+-  Paginado: el listado de tus juegos se hará por partes. Tu SPA debe contar con un paginado que muestre un total de 15 videojuegos por página.
 
-**⚠️ IMPORTANTE**: se deben mostrar tanto los drivers traidos desde la API como así también los de la base de datos, pero **NO** está permitido almacenar en la base de datos los drivers de la API. **Solamente se pueden guardar aquellos creados desde el form**.
+**⚠️ IMPORTANTE**: se deben mostrar tanto los videojuegos traidos desde la API como así también los de la base de datos, pero **NO** está permitido almacenar en la base de datos los juegos de la API. **Solamente se pueden guardar aquellos creados desde el form**.
 
 
 <br />
@@ -248,12 +248,11 @@ Se debe desarrollar una aplicación utilizando **React** y **Redux** que conteng
 
 -  ID.
 -  Nombre.
--  Color de ojos
--  Color de Pelo
+-  Jugadores.
 -  Imagen. 
--  Año de aparición. 
+-  Rating. 
 -  Descripción. 
--  Equipos asociados
+-  Géneros asociados asociados
 
 
 **📍 FORM PAGE |**: en esta vista se encontrará el formulario para crear un nuevo videojuego.
@@ -261,16 +260,16 @@ Se debe desarrollar una aplicación utilizando **React** y **Redux** que conteng
 Este formulario debe ser **controlado completamente con JavaScritp**. No se pueden utilizar validaciones HTML, ni utilizar librerías especiales para esto. Debe contar con los siguientes campos:
 
 
--    Nombre.
--  Color de ojos
--  Color de Pelo
+-  Nombre.
+-  Jugadores.
 -  Imagen. 
--  Año de aparición. 
+-  Rating. 
 -  Descripción. 
--  Posibilidad de seleccionar/agregar varios equipos en simultáneo.
--  Botón para dar de alta (crear) el nuevo personaje.
+-  Géneros asociados asociados
+-  Posibilidad de seleccionar/agregar varios géneros en simultáneo.
+-  Botón para dar de alta (crear) el nuevo videojuego.
 
-> [**IMPORANTE**]: es requisito que el formulario de creación esté validado sólo con JavaScript. Puedes agregar las validaciones que consideres. Por ejemplo: que el nombre del driver no pueda contener símbolos,etc.
+> [**IMPORANTE**]: es requisito que el formulario de creación esté validado sólo con JavaScript. Puedes agregar las validaciones que consideres. Por ejemplo: que el nombre del videojuego no pueda contener símbolos,etc.
 
 <br />
 
@@ -300,3 +299,4 @@ Ten en cuenta que en esta instancia no es obligatorio el desarrollo de testing p
 <div align="center">
 <img src="./videogame.png" alt="" />
 </div>
+
