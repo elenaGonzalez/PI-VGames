@@ -86,7 +86,7 @@ Podrás ver el mensaje
 Esto significa que la API "externa" ya está corriendo en tu computadora en el puerto 5000 (http://localhost:5000). Debes dejar esta consola abierta para poder comunicarte con la API.
 
 ** IMPORTANTE **
-No debes modificar **NINGÚN** archivo dentro de la carpeta api/data. Estos son los archivos que hacen funcionar la API externa. Cualquier modificación en estos archivos puede alterar el funcionamiento normal de la API y de tu proyecto.
+No debes modificar **NINGÚN** archivo dentro de la carpeta api. Estos son los archivos que hacen funcionar la API externa. Cualquier modificación en estos archivos puede alterar el funcionamiento normal de la API y de tu proyecto.
 
 <br />
 
