@@ -268,7 +268,7 @@ Este formulario debe ser **controlado completamente con JavaScritp**. No se pued
 -  Posibilidad de seleccionar/agregar varios géneros en simultáneo.
 -  Botón para dar de alta (crear) el nuevo videojuego.
 
-> [**IMPORANTE**]: es requisito que el formulario de creación esté validado sólo con JavaScript. Puedes agregar las validaciones que consideres. Por ejemplo: que el nombre del videojuego no pueda contener símbolos,etc.
+> [**IMPORTANTE**]: es requisito que el formulario de creación esté validado sólo con JavaScript. Puedes agregar las validaciones que consideres. Por ejemplo: que el nombre del videojuego no pueda contener símbolos,etc.
 
 <br />
 
