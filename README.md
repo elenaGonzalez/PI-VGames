@@ -130,9 +130,9 @@ npm run api
 
 ### Únicos Endpoints/Flags que pueden utilizar
 
-  - GET http://localhost:5000/api
-  - GET http://localhost:5000/api?name={name}
-  - GET http://localhost:5000/api/:{id}
+  - GET http://localhost:5000/videogmaes
+  - GET http://localhost:5000/videogmaes?name={name}
+  - GET http://localhost:5000/videogmaes/:{id}
 
 
 #### Tecnologías necesarias:
@@ -147,15 +147,15 @@ npm run api
 
 ### **🖱 BASE DE DATOS**
 
-Deberás crear dos modelos para tu base de datos. Uno será para los personajes de Marvel y el otro será para los equipos( a los que estén afiliados ). La relación entre ambos modelos debe ser de muchos a muchos. A continuación te dejamos las propiedades que debe tener cada modelo.
+Deberás crear dos modelos para tu base de datos. Uno será para los personajes de videojuego y el otro será para los equipos( a los que estén afiliados ). La relación entre ambos modelos debe ser de muchos a muchos. A continuación te dejamos las propiedades que debe tener cada modelo.
 
 **📍 MODELO 1 | Videogames**
 
 -  ID (deben ser distintos a los que vienen de la API). \*
 -  Titulo. \*
--  Fecha de lanzamiento. \*
+-  Rating. \*
 -  Imagen. \*
--  Año de aparición. \*
+-  Equipos \*
 -  Descripción. \*
 
 <br />
@@ -179,9 +179,9 @@ Tu servidor deberá contar con las siguientes rutas:
 
 #### **📍 GET | /videogames**
 
--  Obtiene un arreglo de objetos, donde cada objeto es un personaje marvel con su información.
+-  Obtiene un arreglo de objetos, donde cada objeto es un personaje videojuego con su información.
 
- IMPORTANTE: Si un personaje marvel no tiene imagen, deberás colocarle una por defecto 🖼️
+ IMPORTANTE: Si un videojuego no tiene imagen, deberás colocarle una por defecto 🖼️
 
 #### **📍 GET | /videogames/:id**
 
@@ -230,7 +230,7 @@ Se debe desarrollar una aplicación utilizando **React** y **Redux** que conteng
 **📍 HOME PAGE |** la página principal de tu SPA debe contener:
 
 -  SearchBar: un input de búsqueda para encontrar videojuegos por nombre.
--  Sector en el que se vea un listado de cards con los videojuegos. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta **`GET /marvels`** y deberá mostrar su:
+-  Sector en el que se vea un listado de cards con los videojuegos. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta **`GET /videogames`** y deberá mostrar su:
    -  Imagen.
    -  Nombre.
    -  Géneros Asociados.
@@ -247,12 +247,12 @@ Se debe desarrollar una aplicación utilizando **React** y **Redux** que conteng
 **📍 DETAIL PAGE |** en esta vista se deberá mostrar toda la información específica de un videojuego:
 
 -  ID.
--  Nombre.
--  Jugadores.
+-  Titulo.
+-  Rating.
 -  Imagen. 
--  Rating. 
 -  Descripción. 
--  Géneros asociados asociados
+-  Equipos
+-  Géneros Asociados
 
 
 **📍 FORM PAGE |**: en esta vista se encontrará el formulario para crear un nuevo videojuego.
@@ -260,12 +260,11 @@ Se debe desarrollar una aplicación utilizando **React** y **Redux** que conteng
 Este formulario debe ser **controlado completamente con JavaScritp**. No se pueden utilizar validaciones HTML, ni utilizar librerías especiales para esto. Debe contar con los siguientes campos:
 
 
--  Nombre.
--  Jugadores.
+-  Titulo.
+-  Rating.
 -  Imagen. 
--  Rating. 
 -  Descripción. 
--  Géneros asociados asociados
+-  Equipos
 -  Posibilidad de seleccionar/agregar varios géneros en simultáneo.
 -  Botón para dar de alta (crear) el nuevo videojuego.
 
@@ -299,4 +298,3 @@ Ten en cuenta que en esta instancia no es obligatorio el desarrollo de testing p
 <div align="center">
 <img src="./videogame.png" alt="" />
 </div>
-
