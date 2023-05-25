@@ -96,9 +96,9 @@ No debes modificar **NINGÚN** archivo dentro de la carpeta api. Estos son los a
 
 1. Deberás forkear este repositorio para tener una copia del mismo en tu cuenta personal de GitHub.
 
-2. Clona el repositorio en tu computadora para comenzar a trabajar. Este repositorio contiene un **`BoilerPlate`** con la estructura general del proyecto, tanto del servidor como del cliente. El boilerplate cuenta con dos carpetas: **`api`** y **`client`**. En estas carpetas estará el código del back-end y el front-end respectivamente.
+2. Clona el repositorio en tu computadora para comenzar a trabajar. Este repositorio contiene un **`BoilerPlate`** con la estructura general del proyecto, tanto del servidor como del cliente. El boilerplate cuenta con dos carpetas: **`server`** y **`client`**. En estas carpetas estará el código del back-end y el front-end respectivamente.
 
-3. En la carpeta **`api`** deberás crear un archivo llamado: **`.env`** que tenga la siguiente forma:
+3. En la carpeta **`server`** deberás crear un archivo llamado: **`.env`** que tenga la siguiente forma:
 
    ```env
        DB_USER=usuariodepostgres
@@ -116,7 +116,7 @@ No debes modificar **NINGÚN** archivo dentro de la carpeta api. Estos son los a
 
 ## **📖 ENUNCIADO GENERAL**
 
-La idea de este proyecto es construir una aplicación web a partir de la API [**vgames**] en la que se pueda:
+La idea de este proyecto es construir una aplicación web a partir de la API [**videogames**] en la que se pueda:
 
 -  Buscar videojuegos.
 -  Visualizar la información de los videojuegos.
