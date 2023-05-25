@@ -55,7 +55,7 @@ Está permitido, **bajo tu responsabilidad**, actualizar las dependencias a vers
 
 ---
 
-## **📋 SOBRE LA API VGAMES...**
+## **📋 SOBRE LA API VIDEOGAMES...**
 
 En este proyecto contarás con una API de Videojuegos que **correrá localmente desde tu computadora**. De esta manera, siempre tendrás disponible esta API externa localmente para poder realizar tu proyecto.
 
