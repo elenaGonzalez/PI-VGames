@@ -130,9 +130,9 @@ npm run api
 
 ### Únicos Endpoints/Flags que pueden utilizar
 
-  - GET http://localhost:5000/videogmaes
-  - GET http://localhost:5000/videogmaes?name={name}
-  - GET http://localhost:5000/videogmaes/:{id}
+  - GET http://localhost:5000/videogames
+  - GET http://localhost:5000/videogames?name={name}
+  - GET http://localhost:5000/videogames/:{id}
 
 
 #### Tecnologías necesarias:
