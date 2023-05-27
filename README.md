@@ -131,7 +131,7 @@ npm run api
 ### Únicos Endpoints/Flags que pueden utilizar
 
   - GET http://localhost:5000/videogames
-  - GET http://localhost:5000/videogames?name={name}
+  - GET http://localhost:5000/videogames?title_like={title}
   - GET http://localhost:5000/videogames/:{id}
 
 
@@ -190,13 +190,13 @@ Tu servidor deberá contar con las siguientes rutas:
 -  Tiene que incluir los datos del/los genero/s a los que este videojuego tiene asociado/s.
 -  Debe funcionar tanto para los juegos de la API como para los de la base de datos.
 
-#### **📍 GET | /videogames/name?="..."**
+#### **📍 GET | /videogames/title?="..."**
 
 -  Esta ruta debe obtener los primeros 15 personajes que se encuentren con la palabra recibida por query.
 -  Debe poder buscarlo independientemente de mayúsculas o minúsculas.
 -  Si no existe el videojuego, debe mostrar un mensaje adecuado.
 -  Debe buscar tanto los de la API como los de la base de datos.
--  La búsqueda es exacta
+-  La búsqueda no es exacta, es decir, que debe retornar todos los videojuegos que contengan el texto ingresado
 
 #### **📍 POST | /videogames**
 
@@ -232,7 +232,7 @@ Se debe desarrollar una aplicación utilizando **React** y **Redux** que conteng
 -  SearchBar: un input de búsqueda para encontrar videojuegos por nombre.
 -  Sector en el que se vea un listado de cards con los videojuegos. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta **`GET /videogames`** y deberá mostrar su:
    -  Imagen.
-   -  Nombre.
+   -  Título.
    -  Géneros Asociados.
 -  Cuando se le hace click a una Card deberá redirigir al detalle de ese videojuego específico.
 -  Botones/Opciones para **filtrar** por genero, y por si su origen es de la API o de la base de datos (creados por nosotros desde el formulario).
